@@ -6,38 +6,69 @@
 <meta name="description" content="Computer Asssited Scanning">
 <meta name="author" content="Didi Mudigdo">
 <link rel="stylesheet" href="style.css">
-<script type="text/javascript" src="thescripts.js"></script>
+<!-- <script type="text/javascript" src="thescripts.js"></script> -->
 </head>
 
 <body>
 <table>
-<tr class="row1">
-<td class="col1">a</td><td class="col2">b</td><td class="col3">c</td>
-<td class="col4">d</td><td class="col5">e</td></tr>
-<tr class="row2">
-<td class="col1">f</td><td class="col2">g</td><td class="col3">h</td>
-<td class="col4">i</td><td class="col5">j</td></tr>
-<tr class="row3">
-<td class="col1">k</td><td class="col2">l</td><td class="col3">m</td>
-<td class="col4">n</td><td class="col5">o</td></tr>
-<tr class="row4">
-<td class="col1">p</td><td class="col2">q</td><td class="col3">r</td>
-<td class="col4">s</td><td class="col5">t</td></tr>
-<tr class="row5">
-<td class="col1">u</td><td class="col2">v</td><td class="col3">w</td>
-<td class="col4">x</td><td class="col5">y</td></tr>
+<tr id="row1">
+<td id="row1col1">a</td><td id="row1col2">b</td><td id="row1col3">c</td>
+<td id="row1col4">d</td><td id="row1col5">e</td></tr>
+
+<tr id="row2">
+<td id="row2col1">f</td><td id="row2col2">g</td><td id="row2col3">h</td>
+<td id="row2col4">i</td><td id="row2col5">j</td></tr>
+
+<tr id="row3">
+<td id="row3col1">k</td><td id="row3col2">l</td><td id="row3col3">m</td>
+<td id="row3col4">n</td><td id="row3col5">o</td></tr>
+
+<tr id="row4">
+<td id="row4col1">p</td><td id="row4col2">q</td><td id="row4col3">r</td>
+<td id="row4col4">s</td><td id="row4col5">t</td></tr>
+
+<tr id="highlighted">
+<td id="row5col1">u</td><td id="row5col2">v</td><td id="row5col3">w</td>
+<td id="row5col4">x</td><td id="row5col5">y</td></tr>
 </tr>
 </table>
 
-<button onclick="highlight('row1')">Row 1</button>
+<button onclick="stopScan()">STOP</button>
 
-<button onclick="highlight('row2')">Row 2</button>
+<script>
+var highlight = function() {
 
-<button onclick="highlight('row3')">Row 3</button>
+//    unhighlight currently highlighted row:
+    var x = document.getElementById('highlighted');
+    x.id = 'row' + prevrow;
 
-<button onclick="highlight('row4')">Row 4</button>
 
-<button onclick="highlight('row5')">Row 5</button>
+//    highlight current row:
+
+    var y = document.getElementById('row' + currrow);
+    y.id = 'highlighted';
+
+    currrow++;
+    if (currrow == 6) { currrow = 1 };
+    prevrow++;
+    if (prevrow == 6) { prevrow = 1 };
+
+};
+
+var stopScan = function() {
+    clearInterval(intervalId);
+    console.log('You clicked row: ' + prevrow);
+};
+
+// MAIN
+
+// Start with row 5 (last row) already highlighted in the table
+
+var currrow = 1;
+var prevrow = 5;
+
+var intervalId = setInterval(highlight,1000);
+</script>
 
 </body>
 

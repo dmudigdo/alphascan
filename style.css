@@ -1,5 +1,12 @@
-.col3 { color: blue }
 
-.row1 { color: red }
+#row1 { color: red }
 
-.highlighted { font-weight:bold }
+#row2 { color: red }
+
+#row3 { color: red }
+
+#row4 { color: red }
+
+#row5 { color: red }
+
+#highlighted { font-weight:bold }
